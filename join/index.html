@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הצטרפות למשפחה ב-HoneyMom</title>
+<meta name="robots" content="noindex">
+<meta property="og:title" content="הצטרפות למשפחה ב-HoneyMom">
+<meta property="og:description" content="מעקב משותף אחרי התינוק/ת, לשני ההורים">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap">
+<style>
+  :root { --navy:#1F4E6B; --coral:#FF7A6B; --ink:#1f2a33; --muted:#5b6b78; --line:#e3e9ee; --bg:#f6f8fb; --card:#ffffff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 "Rubik","Arial Hebrew",system-ui,sans-serif; padding:40px 20px; }
+  main { max-width:420px; margin:0 auto; background:var(--card); border-radius:24px; padding:32px 24px; text-align:center; display:grid; gap:18px; box-shadow:0 8px 30px rgba(31,78,107,.08); }
+  .icon { width:88px; height:88px; border-radius:20px; justify-self:center; }
+  h1 { margin:0; font-size:24px; color:var(--navy); text-wrap:balance; }
+  p { margin:0; color:var(--muted); }
+  .btn { display:block; background:var(--navy); color:#fff; text-decoration:none; font-weight:600; font-size:17px; padding:14px; border-radius:999px; }
+  .code-box { border:1px dashed var(--line); border-radius:16px; padding:14px; display:grid; gap:8px; }
+  .code { font-size:32px; font-weight:600; letter-spacing:6px; color:var(--navy); direction:ltr; font-variant-numeric:tabular-nums; }
+  .copy { background:none; border:1px solid var(--navy); color:var(--navy); font:inherit; font-weight:500; padding:8px 16px; border-radius:999px; cursor:pointer; justify-self:center; }
+  .copy:focus-visible, .btn:focus-visible { outline:3px solid var(--coral); outline-offset:2px; }
+  small { color:var(--muted); font-size:13px; }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="icon.png" alt="HoneyMom">
+  <h1>הוזמנת להצטרף למשפחה ב-HoneyMom</h1>
+  <p>מעקב משותף אחרי הנקות, שינה, חיתולים ועוד, בזמן אמת עם בן/בת הזוג.</p>
+
+  <a id="open" class="btn" href="#">פתיחה באפליקציה</a>
+
+  <div class="code-box" id="code-box" hidden>
+    <small>אם האפליקציה לא נפתחה: פותחים את HoneyMom ← "הצטרפות עם קוד" ומזינים</small>
+    <div class="code" id="code"></div>
+    <button class="copy" id="copy" type="button">העתקת הקוד</button>
+  </div>
+
+  <small id="no-code" hidden>הקישור לא כולל קוד הזמנה. בקשו מבן/בת הזוג לשלוח את הקישור שוב.</small>
+</main>
+<script>
+  // Invite links look like .../join/?code=ABC123. Opening the app uses its URL
+  // scheme (handled by the app's family-setup screen); the code is shown too in
+  // case the app isn't installed yet or the browser blocks the hand-off.
+  var params = new URLSearchParams(location.search);
+  var code = (params.get('code') || '').trim().toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12);
+  var open = document.getElementById('open');
+  if (code) {
+    var appUrl = 'babytrackerapp://family-setup?code=' + encodeURIComponent(code);
+    open.href = appUrl;
+    document.getElementById('code').textContent = code;
+    document.getElementById('code-box').hidden = false;
+    document.getElementById('copy').addEventListener('click', function () {
+      var btn = this;
+      (navigator.clipboard ? navigator.clipboard.writeText(code) : Promise.reject()).then(
+        function () { btn.textContent = 'הקוד הועתק ✓'; },
+        function () { btn.textContent = 'סמנו את הקוד והעתיקו'; }
+      );
+    });
+    // Try once automatically; the button stays for browsers that need a tap.
+    setTimeout(function () { location.href = appUrl; }, 300);
+  } else {
+    open.hidden = true;
+    document.getElementById('no-code').hidden = false;
+  }
+</script>
+</body>
+</html>
