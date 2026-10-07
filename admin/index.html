@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>HoneyMom · ניהול</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="boot" class="center-screen"><div class="spinner" aria-label="טוען"></div></div>
+
+<!-- Sign-in -->
+<section id="auth" class="center-screen" hidden>
+  <div class="auth-card">
+    <img src="mark.png" alt="" class="auth-mark" width="72" height="72">
+    <h1>HoneyMom <span>ניהול</span></h1>
+
+    <form id="form-password" class="stack">
+      <label>אימייל<input type="email" name="email" autocomplete="username" required dir="ltr"></label>
+      <label>סיסמה<input type="password" name="password" autocomplete="current-password" required dir="ltr"></label>
+      <button type="submit" class="btn primary">כניסה</button>
+      <div class="auth-links">
+        <button type="button" class="link" data-auth-mode="magic">כניסה עם קישור במייל</button>
+        <button type="button" class="link" data-auth-mode="forgot">שכחתי סיסמה</button>
+      </div>
+    </form>
+
+    <form id="form-magic" class="stack" hidden>
+      <p class="muted">נשלח לך קישור כניסה למייל.</p>
+      <label>אימייל<input type="email" name="email" autocomplete="username" required dir="ltr"></label>
+      <button type="submit" class="btn primary">שליחת קישור</button>
+      <button type="button" class="link" data-auth-mode="password">חזרה לכניסה עם סיסמה</button>
+    </form>
+
+    <form id="form-forgot" class="stack" hidden>
+      <p class="muted">נשלח לך קישור לבחירת סיסמה חדשה.</p>
+      <label>אימייל<input type="email" name="email" autocomplete="username" required dir="ltr"></label>
+      <button type="submit" class="btn primary">שליחת קישור איפוס</button>
+      <button type="button" class="link" data-auth-mode="password">חזרה לכניסה עם סיסמה</button>
+    </form>
+
+    <form id="form-newpass" class="stack" hidden>
+      <p class="muted">בחירת סיסמה חדשה</p>
+      <label>סיסמה חדשה<input type="password" name="password" autocomplete="new-password" minlength="8" required dir="ltr"></label>
+      <label>אימות סיסמה<input type="password" name="password2" autocomplete="new-password" minlength="8" required dir="ltr"></label>
+      <button type="submit" class="btn primary">שמירת סיסמה</button>
+    </form>
+
+    <p id="auth-msg" class="msg" role="status" hidden></p>
+  </div>
+</section>
+
+<!-- Signed in but not an admin -->
+<section id="denied" class="center-screen" hidden>
+  <div class="auth-card">
+    <img src="mark.png" alt="" class="auth-mark" width="72" height="72">
+    <h1>אין לך הרשאה</h1>
+    <p class="muted">החשבון <b id="denied-email" dir="ltr"></b> אינו מוגדר כמנהל.</p>
+    <button type="button" class="btn" data-signout>התנתקות</button>
+  </div>
+</section>
+
+<!-- Panel -->
+<div id="app" hidden>
+  <header class="topbar">
+    <div class="brand"><img src="mark.png" alt="" width="32" height="32"><span>HoneyMom</span><small>ניהול</small></div>
+    <nav id="nav" class="tabs" aria-label="ניווט">
+      <a href="#overview" data-tab="overview">סקירה</a>
+      <a href="#users" data-tab="users">משתמשים ומשפחות</a>
+      <a href="#revenue" data-tab="revenue">הכנסות</a>
+      <a href="#support" data-tab="support">תמיכה</a>
+      <a href="#admins" data-tab="admins" data-admin-only>מנהלים</a>
+      <a href="#audit" data-tab="audit">יומן פעולות</a>
+    </nav>
+    <div class="who"><span id="who-email" dir="ltr"></span><span id="who-role" class="badge"></span><button type="button" class="link" data-signout>התנתקות</button></div>
+  </header>
+
+  <main id="main">
+    <section id="view-overview" class="view" hidden></section>
+    <section id="view-users" class="view" hidden></section>
+    <section id="view-revenue" class="view" hidden></section>
+    <section id="view-support" class="view" hidden></section>
+    <section id="view-admins" class="view" hidden></section>
+    <section id="view-audit" class="view" hidden></section>
+  </main>
+</div>
+
+<!-- Family / user detail drawer -->
+<div id="drawer-backdrop" hidden></div>
+<aside id="drawer" aria-label="פרטי משפחה" hidden>
+  <div class="drawer-head"><h2 id="drawer-title">פרטים</h2><button type="button" class="icon-btn" id="drawer-close" aria-label="סגירה">✕</button></div>
+  <div id="drawer-body"></div>
+</aside>
+
+<div id="tooltip" role="tooltip" hidden></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
