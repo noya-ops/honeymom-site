@@ -210,3 +210,6 @@ td.wrap { white-space: normal; min-width: 220px; }
   .kpi .value { font-size: 24px; }
   .counts { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* The mark is the square app icon: round it like on the home screen. */
+.auth-mark, .brand img { border-radius: 22%; }

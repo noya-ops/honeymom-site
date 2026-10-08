@@ -1,7 +1,7 @@
 // HoneyMom admin panel. Static page; all data comes from the `admin-api`
 // Edge Function, which checks that the signed-in user is an admin.
 // Only the public (publishable) key lives here - never a secret.
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/+esm';
 
 const SUPABASE_URL = 'https://whycagyprmmwhmcfnlbc.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_wvsU4rIIiWBKZL09JLI1wQ_UQeBbGhf';
@@ -631,7 +631,7 @@ function renderSupport(el) {
       <h2>הכנת משתמש App Review</h2>
       <p class="sub">מכין את החשבון <span dir="ltr">appreview.demo@babytrackerapp.test</span> לבדיקה של אפל: קובע לו את הסיסמה שתכתבי כאן, מוודא שהמשפחה שלו פתוחה, ואם לא נרשם בו כלום ב-24 השעות האחרונות מוסיף כמה רשומות לדוגמה מהיום (2 הנקות, פיפי וקקי, שינה אחת). את אותה סיסמה צריך לרשום ב-App Store Connect.</p>
       <form id="review-form" class="stack">
-        <label>סיסמה לחשבון<input name="password" type="text" minlength="8" required dir="ltr" autocomplete="off" ${isAdmin() ? '' : 'disabled'}></label>
+        <label>סיסמה לחשבון<input name="password" type="password" minlength="8" required dir="ltr" autocomplete="off" ${isAdmin() ? '' : 'disabled'}></label>
         <div><button class="btn primary" type="submit" ${isAdmin() ? '' : 'disabled'}>הכנת החשבון</button></div>
         ${isAdmin() ? '' : '<p class="muted" style="font-size:13px;margin:0">הרשאת צפייה בלבד.</p>'}
       </form>
