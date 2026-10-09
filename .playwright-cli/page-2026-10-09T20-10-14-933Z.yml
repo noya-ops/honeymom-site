@@ -1,0 +1,46 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - img "HoneyMom" [ref=e5]
+    - navigation [ref=e6]:
+      - link "English" [ref=e7] [cursor=pointer]:
+        - /url: "#en"
+  - generic [ref=e8]:
+    - heading "תמיכה" [level=1] [ref=e9]
+    - paragraph [ref=e10]: יש שאלה או משהו לא עובד? כתבו לנו ונחזור אליכם בהקדם.
+    - paragraph [ref=e11]:
+      - text: "מייל:"
+      - link "honeymom.app@gmail.com" [ref=e12] [cursor=pointer]:
+        - /url: mailto:honeymom.app@gmail.com
+    - heading "איך מצרפים את בן/בת הזוג?" [level=2] [ref=e13]
+    - paragraph [ref=e14]: בהגדרות לוחצים על "שליחת קישור הצטרפות" ושולחים את הקישור. בן/בת הזוג מורידים את HoneyMom, נכנסים עם המייל שלהם ובוחרים "הצטרפות עם קוד". הקוד מופיע גם בהגדרות.
+    - heading "האם כל הורה צריך לקנות?" [level=2] [ref=e15]
+    - paragraph [ref=e16]: לא. רכישה אחת פותחת את האפליקציה לכל ההורים במשפחה, בלי מנוי ובלי חיובים חוזרים.
+    - heading "קניתי, אבל האפליקציה עדיין מבקשת לרכוש" [level=2] [ref=e17]
+    - paragraph [ref=e18]: במסך הרכישה לוחצים על "שחזור רכישות", מאותו חשבון Apple שאיתו קניתם. אם זה לא עוזר, כתבו לנו במייל.
+    - heading "איך מוסיפים את הווידג'ט?" [level=2] [ref=e19]
+    - paragraph [ref=e20]: לוחצים לחיצה ארוכה על מסך הבית של האייפון, מקישים על "+" ובוחרים HoneyMom.
+    - heading "איך מוחקים את החשבון?" [level=2] [ref=e21]
+    - paragraph [ref=e22]: בהגדרות לוחצים על "מחיקת חשבון". אם אתם ההורה היחיד במשפחה, כל הנתונים של התינוק נמחקים לצמיתות.
+    - paragraph [ref=e23]:
+      - link "מדיניות פרטיות" [ref=e24] [cursor=pointer]:
+        - /url: ../privacy/
+  - separator [ref=e25]
+  - generic [ref=e26]:
+    - heading "Support" [level=1] [ref=e27]
+    - paragraph [ref=e28]:
+      - text: Questions or problems? Email
+      - link "honeymom.app@gmail.com" [ref=e29] [cursor=pointer]:
+        - /url: mailto:honeymom.app@gmail.com
+      - text: and we'll get back to you soon.
+    - paragraph [ref=e30]:
+      - strong [ref=e31]: "Invite your partner:"
+      - text: Settings → "Send join link". Your partner installs HoneyMom, signs in with their own email and chooses "Join with code".
+    - paragraph [ref=e32]:
+      - strong [ref=e33]: "One purchase per family:"
+      - text: a single one-time purchase unlocks the app for every parent. Already bought? Tap "Restore purchases" on the purchase screen.
+    - paragraph [ref=e34]:
+      - strong [ref=e35]: "Delete your account:"
+      - text: Settings → "Delete account".
+    - paragraph [ref=e36]:
+      - link "Privacy Policy" [ref=e37] [cursor=pointer]:
+        - /url: ../privacy/#en
